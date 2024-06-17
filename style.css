@@ -103,9 +103,9 @@ span {
 }
 
 .home-img img {
-    width: 50vh;
+    width: 55vh;
     border-radius: 50%;
-    animation: floatImage 4s ease-in-out infinite;
+    animation: floatImage  4s ease-in-out infinite;
 }
 
 @keyframes floatImage {
@@ -123,7 +123,7 @@ span {
 }
 
 .home-content p {
-    font-size: 1.6rem;
+    font-size: 4rem;
 }
 
 .social-media a {
