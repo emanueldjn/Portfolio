@@ -8,6 +8,34 @@ menuIcon.onclick = () => {
     navbar.classList.toggle('active');
 } 
 
+/* ========================== Dark Theme ================= */
+
+document.addEventListener('DOMContentLoaded', () => {
+    const checkbox = document.getElementById('checkbox');
+    const themeLabel = document.getElementById('theme-label');
+    const currentTheme = localStorage.getItem('theme');
+
+    if (currentTheme) {
+        document.body.classList.add(currentTheme);
+        checkbox.checked = currentTheme === 'light-mode';
+        themeLabel.textContent = checkbox.checked ? '☀️' : '🌙';
+    }
+
+    checkbox.addEventListener('change', () => {
+        if (checkbox.checked) {
+            document.body.classList.remove('dark-mode');
+            document.body.classList.add('light-mode');
+            localStorage.setItem('theme', 'light-mode');
+            themeLabel.textContent = '☀️'; // Ícone para o tema claro
+        } else {
+            document.body.classList.remove('light-mode');
+            document.body.classList.add('dark-mode');
+            localStorage.setItem('theme', 'dark-mode');
+            themeLabel.textContent = '🌙'; // Ícone para o tema escuro
+        }
+    });
+});
+
 /* ========================== scroll section active link ================= */
 
 let sections = document.querySelectorAll('section');
