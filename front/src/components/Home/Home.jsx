@@ -59,7 +59,7 @@ function Home() {
           </a>
         </div>
         <a
-          href="src/assets/pdf/EmanuelNascimento_CV.pdf"
+          href="/pdf/EmanuelNascimento_CV.pdf"
           target="_blank"
           rel="noopener noreferrer"
           className="home-btn"
@@ -68,7 +68,7 @@ function Home() {
         </a>
       </div>
       <div className="home-img">
-        <img src="src\assets\imgs\emanuel.jpeg" alt="Emanuel Nascimento" />
+        <img src="/imgs/emanuel.jpeg" alt="Emanuel Nascimento" />
       </div>
     </section>
   );

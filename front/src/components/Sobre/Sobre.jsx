@@ -5,7 +5,7 @@ function Sobre() {
   return (
     <section className="sobre">
       <div className="sobre-img">
-        <img src="src/assets/imgs/emanuel.jpeg" alt="Emanuel Nascimento" />
+        <img src="/imgs/emanuel.jpeg" alt="Emanuel Nascimento" />
       </div>
       <div className="sobre-content">
         <h2 className="sobre-heading">Sobre <span>mim</span></h2>
