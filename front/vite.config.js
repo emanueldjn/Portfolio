@@ -10,8 +10,8 @@ export default defineConfig({
   },
   css: {
     modules: {
-      // Desativa CSS Modules para arquivos .css
       scopeBehaviour: 'global',
     },
   },
+  base: '/', // deixe '/' se o site estiver na raiz
 });
