@@ -1,0 +1,81 @@
+/* styles.css - Página em Construção */
+
+.construcao-container {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #f7f7f7;
+    color: #222;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+@media (prefers-color-scheme: dark) {
+    .construcao-container {
+        background: #181818;
+        color: #f7f7f7;
+    }
+    .construcao-icone {
+        color: #ffd54f;
+    }
+    .construcao-titulo {
+        color: #fff;
+    }
+    .construcao-texto {
+        color: #bbb;
+    }
+    .construcao-voltar {
+        background: #f7f7f7;
+        color: #222;
+    }
+    .construcao-voltar:hover {
+        background: #ffd54f;
+        color: #181818;
+    }
+}
+
+.construcao-icone {
+    font-size: 5rem;
+    color: #ffb300;
+    margin-bottom: 24px;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+    100% { transform: scale(1); }
+}
+
+.construcao-titulo {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+}
+
+.construcao-texto {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 24px;
+    max-width: 400px;
+}
+
+.construcao-voltar {
+    display: inline-block;
+    padding: 10px 28px;
+    background: #222;
+    color: #fff;
+    border-radius: 24px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.construcao-voltar:hover {
+    background: #ffb300;
+    color: #222;
+}
