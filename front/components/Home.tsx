@@ -100,7 +100,7 @@ export default function Home() {
                   className="flex items-center space-x-2"
                 >
                   <Download className="w-4 h-4 sm:w-5 sm:h-5" />
-                  <span className="text-sm sm:text-base">BAIXAR CV</span>
+                  <span className="text-sm sm:text-base">ABRIR CV</span>
                 </a>
               </Button>
             </div>
