@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Menu, X, Sun, Moon } from "lucide-react"
+import { Menu, X, Sun, Moon, Link } from "lucide-react"
 
 interface HeaderProps {
   theme: string
@@ -34,11 +34,18 @@ export default function Header({ theme, toggleTheme }: HeaderProps) {
         isScrolled ? "bg-background/80 backdrop-blur-md border-b border-border" : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-0">
+        <div className="flex items-center justify-between min-h-[1rem]">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <h1 className="text-2xl font-black text-primary">WebSevenDigital</h1>
+            {/* <h1 className="text-2xl font-black text-primary">WebSevenDigital</h1> */}
+            <a href="/" className="flex items-center space-x-2">
+              {theme === "dark" ? (
+                <img src="/imgs/logo2.png" alt="WebSevenDigital" className="h-30 w-auto" />
+              ) : (
+                <img src="/imgs/logo-light2.png" alt="WebSevenDigital" className="h-30 w-auto" />
+              )}
+            </a>
           </div>
 
           {/* Desktop Navigation */}
