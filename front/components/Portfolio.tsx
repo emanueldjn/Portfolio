@@ -22,40 +22,42 @@ export default function Portfolio() {
       tech: ["React", "CSS", "JavaScript"],
     },
     {
-      img: "/img/calc2.png",
-      title: "Calculadora React",
+      img: "/imgs/medwise.png",
+      title: "MedWise",
+      description: "Plataforma de questões de estudo para estudantes de medicina.",
+      link: "https://medwise-front.vercel.app/",
+      tech: ["React", "Tailwind CSS", "JavaScript", "NodeJs", "PostgreSQL"],
+    },
+    {
+      img: "/imgs/calc2.png",
+      title: "Calculadora",
       description: "Calculadora funcional desenvolvida com React e design moderno.",
       link: "https://react-chi-ten.vercel.app/",
       tech: ["React", "CSS", "JavaScript"],
     },
-    {
-      img: "/img/sistema-bancario.jpg",
-      title: "Sistema Bancário",
-      description: "Sistema bancário completo desenvolvido em Python com funcionalidades avançadas.",
-      link: "https://github.com/emanueldjn/projetos_python/tree/main/sistema_bancario_V2.py",
-      tech: ["Python", "POO", "Algoritmos"],
-    },
-    {
-      img: "/img/tic-tac-toe.png",
-      title: "Jogo da Velha",
-      description: "Jogo interativo com lógica de programação e design responsivo.",
-      link: "https://desenvolvimento-web-ashen.vercel.app",
-      tech: ["HTML", "CSS", "JavaScript"],
-    },
-    {
-      img: "/img/rick-and-morty.jpg",
-      title: "Rick and Morty App",
-      description: "Aplicação React consumindo API do Rick and Morty com design moderno.",
-      link: "https://rick-and-morty-alpha-puce.vercel.app/",
-      tech: ["React", "API", "CSS"],
-    },
-    {
-      img: "/img/churrascometro.jpg",
-      title: "Churrascômetro",
-      description: "Calculadora para churrascos com interface intuitiva e responsiva.",
-      link: "https://desenvolvimento-web-ekzs.vercel.app",
-      tech: ["HTML", "CSS", "JavaScript"],
-    },
+    // {
+    //   img: "/img/sistema-bancario.jpg",
+    //   title: "Sistema Bancário",
+    //   description: "Sistema bancário completo desenvolvido em Python com funcionalidades avançadas.",
+    //   link: "https://github.com/emanueldjn/projetos_python/tree/main/sistema_bancario_V2.py",
+    //   tech: ["Python", "POO", "Algoritmos"],
+    // },
+    // {
+    //   img: "/img/tic-tac-toe.png",
+    //   title: "Jogo da Velha",
+    //   description: "Jogo interativo com lógica de programação e design responsivo.",
+    //   link: "https://desenvolvimento-web-ashen.vercel.app",
+    //   tech: ["HTML", "CSS", "JavaScript"],
+    // },
+
+    // {
+    //   img: "/img/churrascometro.jpg",
+    //   title: "Churrascômetro",
+    //   description: "Calculadora para churrascos com interface intuitiva e responsiva.",
+    //   link: "https://desenvolvimento-web-ekzs.vercel.app",
+    //   tech: ["HTML", "CSS", "JavaScript"],
+    // },
+    
   ]
 
   return (
@@ -63,10 +65,10 @@ export default function Portfolio() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 lg:mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-foreground mb-3 lg:mb-4">
-            Últimos <span className="text-primary">Projetos</span>
+            Principais <span className="text-primary">Projetos</span>
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-            Confira alguns dos meus projetos mais recentes, desenvolvidos com diferentes tecnologias
+            Confira alguns dos meus projetos mais recentes, desenvolvidos com diferentes tecnologias.
           </p>
         </div>
 

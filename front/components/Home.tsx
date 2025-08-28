@@ -8,7 +8,7 @@ export default function Home() {
   const textRef = useRef<HTMLSpanElement>(null)
 
   useEffect(() => {
-    const texts = ["Bacharel em Eng. de Software", "Front-end Developer", "React Developer"]
+    const texts = [ "Desenvolvedor de Software" ,"Bacharel em Eng. de Software", "Full-Stack Developer" ]
     let textIndex = 0
     let charIndex = 0
     let isDeleting = false

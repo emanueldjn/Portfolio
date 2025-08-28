@@ -60,7 +60,7 @@ export default function Contact() {
                 </div>
                 <div className="min-w-0">
                   <h4 className="font-semibold text-foreground text-sm sm:text-base">Email</h4>
-                  <p className="text-muted-foreground text-sm sm:text-base break-all">emanueldjn@gmail.com</p>
+                  <p className="text-muted-foreground text-sm sm:text-base break-all">emanuelnas29@gmail.com</p>
                 </div>
               </div>
 
@@ -70,7 +70,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-foreground text-sm sm:text-base">Telefone</h4>
-                  <p className="text-muted-foreground text-sm sm:text-base">+55 (11) 99999-9999</p>
+                  <p className="text-muted-foreground text-sm sm:text-base">+54 9 11 5574-0085</p>
                 </div>
               </div>
 
@@ -80,7 +80,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-foreground text-sm sm:text-base">Localização</h4>
-                  <p className="text-muted-foreground text-sm sm:text-base">São Paulo, Brasil</p>
+                  <p className="text-muted-foreground text-sm sm:text-base">Buenos Aires - ARG <br/>Campo do Brito, SE - Brasil </p>
                 </div>
               </div>
             </div>

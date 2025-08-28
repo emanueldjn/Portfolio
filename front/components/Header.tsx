@@ -38,7 +38,7 @@ export default function Header({ theme, toggleTheme }: HeaderProps) {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <h1 className="text-2xl font-black text-primary">Emanuel</h1>
+            <h1 className="text-2xl font-black text-primary">WebSevenDigital</h1>
           </div>
 
           {/* Desktop Navigation */}

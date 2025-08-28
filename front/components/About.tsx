@@ -29,30 +29,22 @@ export default function About() {
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-foreground mb-3 lg:mb-4">
                 Sobre <span className="text-primary">mim</span>
               </h2>
-              <h3 className="text-xl sm:text-2xl font-semibold text-accent mb-4 lg:mb-6">
-                Desenvolvedor Web em Formação
-              </h3>
+              {/* <h3 className="text-xl sm:text-2xl font-semibold text-accent mb-4 lg:mb-6">
+                Desenvolvedor de Software
+              </h3> */}
             </div>
 
             <div className="space-y-4 lg:space-y-6 text-muted-foreground leading-relaxed text-sm sm:text-base">
               <p>
-                Meu nome é Emanuel, e sou um apaixonado por tecnologia que encontrou na programação uma maneira de
-                transformar ideias em soluções práticas. Como estudante de Engenharia de Software e estagiário em
-                desenvolvimento de software com foco em VTEX IO, estou vivendo uma jornada empolgante, onde cada desafio
-                é uma chance de crescer e aprender.
+                Meu nome é Emanuel e foi pela tecnologia que encontrei maneiras de transformar ideias em soluções práticas. Sou estudante de Engenharia de Software e atualmente atuo como desenvolvedor de software com foco em ecommerces e softwares modernos e funcionais. Encaro a tecnologia como um meio poderoso de transformar ideias em soluções eficientes, e é isso que me motiva a seguir aprimorando minhas habilidades técnicas e profissionais.
               </p>
 
               <p>
-                No meu estágio, trabalho com equipes para construir e aprimorar soluções digitais, o que me ensinou a
-                importância da colaboração e da atenção aos detalhes. Meus projetos pessoais e acadêmicos me desafiam a
-                explorar novas ideias e a pensar de forma criativa, sempre buscando formas de melhorar minhas
-                habilidades e entregar resultados de qualidade.
+                Durante meu trabalho, tenho colaborado com equipes multidisciplinares no desenvolvimento e na melhoria de soluções digitais, adquirindo uma base sólida em boas práticas de programação, atenção aos detalhes e trabalho em equipe. Além disso, os projetos acadêmicos e pessoais que desenvolvo refletem meu interesse constante por inovação e aprendizado contínuo.
               </p>
 
               <p>
-                Fora do mundo do código, gosto de praticar esportes, assistir séries, ouvir músicas e sair com amigos,
-                atividades que me recarregam e inspiram novas ideias. Meu objetivo é me consolidar como desenvolvedor,
-                contribuindo para projetos inovadores e enfrentando desafios que me permitam evoluir.
+                Fora do ambiente profissional, valorizo atividades que me ajudam a manter o equilíbrio e a criatividade, como esportes, música e convivência com amigos. Busco oportunidades onde eu possa contribuir ativamente com meu conhecimento, crescer como desenvolvedor e participar de iniciativas desafiadoras e transformadoras.
               </p>
             </div>
 

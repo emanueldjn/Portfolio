@@ -7,6 +7,7 @@ import About from "@/components/About"
 import EmDesenvolvimento from "@/components/EmDesenvolvimento"
 import Contact from "@/components/Contact"
 import Footer from "@/components/Footer"
+import Portfolio from "@/components/Portfolio"
 
 export default function App() {
   const [theme, setTheme] = useState("dark")
