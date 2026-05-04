@@ -1,137 +1,143 @@
 "use client"
 
-import { useEffect, useRef } from "react"
-import { Github, Linkedin, Download, ChevronDown } from "lucide-react"
+import Image from "next/image"
+import { ArrowRight, Download, Github, Linkedin, Mail, MapPin } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { heroMetrics, profile, quickFacts, serviceHighlights } from "@/lib/portfolio-data"
+
+const socialLinks = [
+  { label: "LinkedIn", href: profile.linkedin, icon: Linkedin },
+  { label: "GitHub", href: profile.github, icon: Github },
+  { label: "Email", href: `mailto:${profile.email}`, icon: Mail },
+]
 
 export default function Home() {
-  const textRef = useRef<HTMLSpanElement>(null)
-
-  useEffect(() => {
-    const texts = [ "Desenvolvedor de Software" ,"Bacharel em Eng. de Software", "Full-Stack Developer" ]
-    let textIndex = 0
-    let charIndex = 0
-    let isDeleting = false
-
-    const typeWriter = () => {
-      const currentText = texts[textIndex]
-      const displayText = isDeleting ? currentText.substring(0, charIndex - 1) : currentText.substring(0, charIndex + 1)
-
-      if (textRef.current) {
-        textRef.current.textContent = displayText
-      }
-
-      if (!isDeleting && charIndex === currentText.length) {
-        setTimeout(() => {
-          isDeleting = true
-        }, 1500)
-      } else if (isDeleting && charIndex === 0) {
-        isDeleting = false
-        textIndex = (textIndex + 1) % texts.length
-      }
-
-      charIndex += isDeleting ? -1 : 1
-      setTimeout(typeWriter, isDeleting ? 50 : 100)
-    }
-
-    typeWriter()
-  }, [])
-
-  const scrollToAbout = () => {
-    document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })
+  const scrollToSection = (sectionId: string) => {
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" })
   }
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5"></div>
-      <div className="absolute top-10 sm:top-20 left-5 sm:left-10 w-48 sm:w-72 h-48 sm:h-72 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-10 sm:bottom-20 right-5 sm:right-10 w-64 sm:w-96 h-64 sm:h-96 bg-accent/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+    <section id="home" className="relative pt-28 sm:pt-36">
+      <div className="section-shell section-space">
+        <div className="grid gap-8 xl:grid-cols-[1.05fr_0.95fr] xl:items-start">
+          <div className="space-y-8">
+            <div className="space-y-5">
+              <span className="eyebrow-pill">Frontend engineer · React · Next.js · VTEX IO</span>
+              <p className="section-kicker">Portfólio · Produto digital · Experiência com operação real</p>
 
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24 sm:mt-32 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          {/* Content */}
-          <div className="text-center lg:text-left space-y-6 lg:space-y-8">
-            <div className="space-y-3 lg:space-y-4">
-              <p className="text-base sm:text-lg text-muted-foreground font-medium">Olá, meu nome é</p>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-foreground">Emanuel</h1>
-              <div className="text-xl sm:text-2xl md:text-3xl font-semibold text-primary">
-                e sou <span ref={textRef} className="border-r-2 border-primary animate-pulse"></span>
-              </div>
+              <h1 className="max-w-5xl text-5xl font-black leading-[0.92] text-foreground sm:text-6xl xl:text-[5.4rem]">
+                Interfaces com
+                <span className="text-primary"> aparência de produto</span>
+                <span className="block">e código pronto para rotina real.</span>
+              </h1>
+
+              <p className="max-w-2xl text-lg leading-8 text-muted-foreground sm:text-xl">
+                {profile.summary}
+              </p>
             </div>
 
-            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              Engenheiro de Software em formação, com experiência prática em projetos web e mobile, atuando
-              principalmente com React, TypeScript, Node.js e VTEX IO. Busco crescer profissionalmente como
-              Desenvolvedor, contribuindo com times colaborativos.
-            </p>
+            <div className="flex flex-wrap gap-3">
+              <Button onClick={() => scrollToSection("portfolio")} size="lg" className="rounded-full px-6">
+                Ver projetos
+                <ArrowRight className="h-4 w-4" />
+              </Button>
 
-            {/* Social Links */}
-            <div className="flex items-center justify-center lg:justify-start space-x-4 sm:space-x-6">
-              <a
-                href="https://www.linkedin.com/in/emanueldjn/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 sm:p-3 rounded-full bg-card hover:bg-primary hover:text-primary-foreground transition-all duration-300 animate-glow"
-              >
-                <Linkedin className="w-5 h-5 sm:w-6 sm:h-6" />
-              </a>
-              <a
-                href="https://github.com/emanueldjn"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 sm:p-3 rounded-full bg-card hover:bg-primary hover:text-primary-foreground transition-all duration-300 animate-glow"
-              >
-                <Github className="w-5 h-5 sm:w-6 sm:h-6" />
-              </a>
-            </div>
-
-            {/* CTA Button */}
-            <div className="flex items-center justify-center lg:justify-start">
               <Button
-                asChild
+                onClick={() => scrollToSection("contact")}
                 size="lg"
-                className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-6 sm:px-8 py-2 sm:py-3 rounded-full transition-all duration-300 hover:scale-105"
+                variant="outline"
+                className="rounded-full border-border/70 bg-card/70 px-6"
               >
-                <a
-                  href="/pdf/EmanuelNascimento_CV.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-2"
-                >
-                  <Download className="w-4 h-4 sm:w-5 sm:h-5" />
-                  <span className="text-sm sm:text-base">ABRIR CV</span>
+                Falar comigo
+              </Button>
+
+              <Button asChild size="lg" variant="ghost" className="rounded-full px-4">
+                <a href={profile.resumeHref} target="_blank" rel="noopener noreferrer">
+                  Abrir CV
+                  <Download className="h-4 w-4" />
                 </a>
               </Button>
             </div>
+
+            <div className="flex flex-wrap gap-3">
+              <span className="eyebrow-pill">
+                <MapPin className="h-4 w-4" />
+                {profile.location}
+              </span>
+              <span className="eyebrow-pill">{profile.availability}</span>
+            </div>
+
+            <div className="flex flex-wrap gap-3">
+              {socialLinks.map((item) => {
+                const Icon = item.icon
+
+                return (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    target={item.href.startsWith("http") ? "_blank" : undefined}
+                    rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-card/68 px-4 py-2 text-sm font-medium text-foreground/80 hover:border-primary/35 hover:text-primary"
+                  >
+                    <Icon className="h-4 w-4" />
+                    {item.label}
+                  </a>
+                )
+              })}
+            </div>
           </div>
 
-          {/* Image */}
-          <div className="flex justify-center lg:justify-end order-first lg:order-last">
-            <div className="relative">
-              <div className="w-64 sm:w-80 h-64 sm:h-80 rounded-full bg-gradient-to-br from-primary to-accent p-1 animate-float">
-                <div className="w-full h-full rounded-full bg-background p-2">
-                  <img
-                    src="/imgs/emanuel3x4.jpg"
-                    alt="Emanuel Nascimento"
-                    className="w-full h-full rounded-full object-cover"
-                  />
+          <div className="space-y-5">
+            <div className="glass-panel relative overflow-hidden rounded-[2rem] p-5 sm:p-6">
+              <div className="absolute right-0 top-0 h-40 w-40 rounded-full bg-primary/12 blur-3xl" />
+              <div className="grid gap-5 lg:grid-cols-[0.88fr_1.12fr]">
+                <div className="image-shell rounded-[1.6rem]">
+                  <div className="relative aspect-[4/5]">
+                    <Image src="/imgs/emanuel3x4.jpg" alt={profile.fullName} fill className="object-cover" priority />
+                  </div>
+                </div>
+
+                <div className="relative space-y-5">
+                  <div>
+                    <p className="section-kicker">Visão profissional</p>
+                    <h2 className="mt-3 text-3xl font-black leading-tight text-foreground">
+                      {profile.headline}
+                    </h2>
+                  </div>
+
+                  <p className="text-base leading-8 text-muted-foreground">{profile.differentiator}</p>
+
+                  <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
+                    {quickFacts.map((fact) => (
+                      <div key={fact.label} className="metric-card rounded-[1.4rem] p-4">
+                        <p className="section-kicker">{fact.label}</p>
+                        <p className="mt-3 text-sm leading-7 text-foreground/82">{fact.value}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
-              <div className="absolute -top-2 sm:-top-4 -right-2 sm:-right-4 w-16 sm:w-24 h-16 sm:h-24 bg-primary/20 rounded-full blur-xl animate-pulse"></div>
-              <div className="absolute -bottom-2 sm:-bottom-4 -left-2 sm:-left-4 w-20 sm:w-32 h-20 sm:h-32 bg-accent/20 rounded-full blur-xl animate-pulse delay-500"></div>
+            </div>
+
+            <div className="grid gap-4 md:grid-cols-3">
+              {heroMetrics.map((metric) => (
+                <div key={metric.label} className="metric-card rounded-[1.6rem] p-5">
+                  <p className="section-kicker">{metric.label}</p>
+                  <p className="mt-4 text-sm leading-7 text-foreground/80">{metric.value}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex flex-wrap gap-2.5">
+              {serviceHighlights.map((item) => (
+                <span key={item} className="skill-chip">
+                  {item}
+                </span>
+              ))}
             </div>
           </div>
         </div>
       </div>
-
-      {/* Scroll Indicator */}
-      <button
-        onClick={scrollToAbout}
-        className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
-      >
-        <ChevronDown className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
-      </button>
     </section>
   )
 }

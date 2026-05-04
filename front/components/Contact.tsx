@@ -1,165 +1,87 @@
 "use client"
 
-import type React from "react"
-
-import { useState } from "react"
-import { Send, Mail, Phone, MapPin } from "lucide-react"
+import { Download, Github, Linkedin, Mail, MessageCircle } from "lucide-react"
+import { contactLinks, serviceHighlights } from "@/lib/portfolio-data"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
+
+const iconMap = {
+  email: Mail,
+  phone: MessageCircle,
+  linkedin: Linkedin,
+  github: Github,
+  cv: Download,
+}
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    subject: "",
-    message: "",
-  })
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    })
-  }
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Handle form submission here
-    console.log("Form submitted:", formData)
-  }
-
   return (
-    <section id="contact" className="py-16 sm:py-20 bg-muted/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 lg:mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-foreground mb-3 lg:mb-4">
-            Entre em <span className="text-primary">contato</span>
-          </h2>
-          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-            Vamos conversar sobre oportunidades, projetos ou apenas trocar uma ideia sobre tecnologia
-          </p>
-        </div>
+    <section id="contact" className="py-20 sm:py-24 lg:py-28">
+      <div className="section-shell">
+        <div className="contact-shell relative overflow-hidden rounded-[2.6rem] px-6 py-8 sm:px-8 sm:py-10 lg:px-10 lg:py-12">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(121,177,165,0.22),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(240,167,108,0.22),transparent_26%)]" />
 
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
-          {/* Contact Info */}
-          <div className="space-y-6 lg:space-y-8">
+          <div className="relative grid gap-8 lg:grid-cols-[0.48fr_0.52fr]">
             <div>
-              <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-4 lg:mb-6">Vamos trabalhar juntos!</h3>
-              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                Estou sempre aberto a novas oportunidades e projetos interessantes. Se você tem uma ideia ou precisa de
-                ajuda com desenvolvimento web, não hesite em entrar em contato.
+              <p className="font-mono text-[11px] uppercase tracking-[0.34em] text-white/60">Contato</p>
+              <h2 className="mt-5 max-w-3xl text-4xl font-black leading-[0.94] text-white sm:text-5xl">
+                Se a interface precisa elevar o nível do produto, podemos conversar.
+              </h2>
+              <p className="mt-6 max-w-2xl text-lg leading-8 text-white/72">
+                Aberto para oportunidades remotas, freelas e times que precisam de um front-end com mais critério
+                visual, clareza de fluxo e responsabilidade técnica.
               </p>
-            </div>
 
-            <div className="space-y-4 lg:space-y-6">
-              <div className="flex items-center space-x-3 sm:space-x-4">
-                <div className="p-2 sm:p-3 bg-primary/10 rounded-full flex-shrink-0">
-                  <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
-                </div>
-                <div className="min-w-0">
-                  <h4 className="font-semibold text-foreground text-sm sm:text-base">Email</h4>
-                  <p className="text-muted-foreground text-sm sm:text-base break-all">emanuelnas29@gmail.com</p>
-                </div>
+              <div className="mt-8 flex flex-wrap gap-2.5">
+                {serviceHighlights.map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-full border border-white/12 px-3 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-white/70"
+                  >
+                    {item}
+                  </span>
+                ))}
               </div>
 
-              <div className="flex items-center space-x-3 sm:space-x-4">
-                <div className="p-2 sm:p-3 bg-primary/10 rounded-full flex-shrink-0">
-                  <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-foreground text-sm sm:text-base">Telefone</h4>
-                  <p className="text-muted-foreground text-sm sm:text-base">+54 9 11 5574-0085</p>
-                </div>
-              </div>
-
-              <div className="flex items-center space-x-3 sm:space-x-4">
-                <div className="p-2 sm:p-3 bg-primary/10 rounded-full flex-shrink-0">
-                  <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-foreground text-sm sm:text-base">Localização</h4>
-                  <p className="text-muted-foreground text-sm sm:text-base">Buenos Aires - ARG <br/>Campo do Brito, SE - Brasil </p>
-                </div>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Button asChild size="lg" className="rounded-full bg-white text-slate-950 hover:bg-white/90">
+                  <a href="mailto:emanuelnas29@gmail.com">Enviar email</a>
+                </Button>
+                <Button
+                  asChild
+                  size="lg"
+                  variant="outline"
+                  className="rounded-full border-white/18 bg-transparent text-white hover:bg-white/10 hover:text-white"
+                >
+                  <a href="https://wa.me/5491155740085" target="_blank" rel="noopener noreferrer">
+                    Chamar no WhatsApp
+                  </a>
+                </Button>
               </div>
             </div>
-          </div>
 
-          {/* Contact Form */}
-          <div className="bg-card rounded-2xl p-4 sm:p-6 lg:p-8 border border-border">
-            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                <div>
-                  <Input
-                    type="text"
-                    name="name"
-                    placeholder="Nome completo"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="bg-input border-border focus:border-primary text-sm sm:text-base"
-                  />
-                </div>
-                <div>
-                  <Input
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="bg-input border-border focus:border-primary text-sm sm:text-base"
-                  />
-                </div>
-              </div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {contactLinks.map((item) => {
+                const Icon = iconMap[item.kind]
+                const shouldOpenInNewTab = item.href.startsWith("http") || item.href.endsWith(".pdf")
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                <div>
-                  <Input
-                    type="tel"
-                    name="phone"
-                    placeholder="Número para contato"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    required
-                    className="bg-input border-border focus:border-primary text-sm sm:text-base"
-                  />
-                </div>
-                <div>
-                  <Input
-                    type="text"
-                    name="subject"
-                    placeholder="Assunto do Email"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    required
-                    className="bg-input border-border focus:border-primary text-sm sm:text-base"
-                  />
-                </div>
-              </div>
+                return (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    target={shouldOpenInNewTab ? "_blank" : undefined}
+                    rel={shouldOpenInNewTab ? "noopener noreferrer" : undefined}
+                    className="rounded-[1.8rem] border border-white/12 bg-white/6 p-5 backdrop-blur-xl transition-transform duration-200 hover:-translate-y-0.5 hover:bg-white/10"
+                  >
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/12 text-white/84">
+                      <Icon className="h-5 w-5" />
+                    </div>
 
-              <div>
-                <Textarea
-                  name="message"
-                  placeholder="Sua Mensagem"
-                  rows={5}
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  className="bg-input border-border focus:border-primary resize-none text-sm sm:text-base"
-                />
-              </div>
-
-              <Button
-                type="submit"
-                size="lg"
-                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold text-sm sm:text-base"
-              >
-                <Send className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                Enviar Mensagem
-              </Button>
-            </form>
+                    <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.28em] text-white/55">{item.label}</p>
+                    <p className="mt-3 text-lg font-semibold text-white">{item.value}</p>
+                    <p className="mt-3 text-sm leading-6 text-white/68">{item.description}</p>
+                  </a>
+                )
+              })}
+            </div>
           </div>
         </div>
       </div>

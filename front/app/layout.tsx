@@ -1,5 +1,5 @@
 import type React from "react"
-import { Montserrat, Open_Sans, Geist_Mono } from "next/font/google"
+import { Geist_Mono, Montserrat, Open_Sans } from "next/font/google"
 import "./globals.css"
 
 const montserrat = Montserrat({
@@ -13,7 +13,7 @@ const openSans = Open_Sans({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-open-sans",
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
 })
 
 const geistMono = Geist_Mono({
@@ -23,19 +23,23 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata = {
-  title: "Emanuel Nascimento - Desenvolvedor Web",
-  description: "Portfólio de Emanuel Nascimento, Desenvolvedor Web especializado em React, TypeScript e VTEX IO",
-    generator: 'v0.app'
+  title: "Emanuel Nascimento | Frontend Engineer",
+  description:
+    "Portfólio de Emanuel Nascimento, frontend engineer especializado em React, TypeScript, Next.js e VTEX IO.",
 }
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode
-}) {
+}>) {
   return (
-    <html lang="pt-BR" className={`${montserrat.variable} ${openSans.variable} ${geistMono.variable} antialiased`}>
-      <body>{children}</body>
+    <html
+      lang="pt-BR"
+      suppressHydrationWarning
+      className={`${montserrat.variable} ${openSans.variable} ${geistMono.variable} antialiased`}
+    >
+      <body className="min-h-screen selection:bg-primary selection:text-primary-foreground">{children}</body>
     </html>
   )
 }

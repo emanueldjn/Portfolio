@@ -1,7 +1,9 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { Menu, X, Sun, Moon, Link } from "lucide-react"
+import { useEffect, useState } from "react"
+import { Menu, Moon, Sun, X } from "lucide-react"
+import { navigationItems, profile } from "@/lib/portfolio-data"
+import { Button } from "@/components/ui/button"
 
 interface HeaderProps {
   theme: string
@@ -13,108 +15,93 @@ export default function Header({ theme, toggleTheme }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
+    const handleScroll = () => setIsScrolled(window.scrollY > 18)
     window.addEventListener("scroll", handleScroll)
+
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
-      setIsMenuOpen(false)
-    }
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" })
+    setIsMenuOpen(false)
   }
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-background/80 backdrop-blur-md border-b border-border" : "bg-transparent"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-0">
-        <div className="flex items-center justify-between min-h-[1rem]">
-          {/* Logo */}
-          <div className="flex-shrink-0">
-            {/* <h1 className="text-2xl font-black text-primary">WebSevenDigital</h1> */}
-            <a href="/" className="flex items-center space-x-2">
-              {theme === "dark" ? (
-                <img src="/imgs/logo2.png" alt="WebSevenDigital" className="h-30 w-auto" />
-              ) : (
-                <img src="/imgs/logo-light2.png" alt="WebSevenDigital" className="h-30 w-auto" />
-              )}
-            </a>
-          </div>
+    <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6 lg:px-8">
+      <div
+        className={`mx-auto max-w-7xl rounded-[1.5rem] border border-border/70 backdrop-blur-2xl transition-all duration-300 ${
+          isScrolled ? "bg-background/88 shadow-[0_24px_60px_rgba(8,15,25,0.12)]" : "bg-background/72"
+        }`}
+      >
+        <div className="flex items-center justify-between gap-4 px-4 py-3 sm:px-5">
+          <button onClick={() => scrollToSection("home")} className="flex items-center gap-3 text-left">
+            <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary text-sm font-black text-primary-foreground">
+              EN
+            </span>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            {["home", "about", "portfolio", "contact"].map((item) => (
+            <div className="hidden min-w-0 sm:block">
+              <p className="truncate text-sm font-semibold text-foreground">{profile.fullName}</p>
+              <p className="section-kicker mt-1 text-primary/70">{profile.role}</p>
+            </div>
+          </button>
+
+          <nav className="hidden items-center gap-1 rounded-full border border-border/60 bg-card/60 p-1 lg:flex">
+            {navigationItems.map((item) => (
               <button
-                key={item}
-                onClick={() => scrollToSection(item)}
-                className="text-foreground hover:text-primary transition-colors duration-200 capitalize font-medium"
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className="rounded-full px-4 py-2 text-sm font-medium text-foreground/72 hover:bg-background hover:text-foreground"
               >
-                {item === "portfolio"
-                  ? "Projetos"
-                  : item === "about"
-                    ? "Sobre"
-                    : item === "contact"
-                      ? "Contato"
-                      : "Home"}
+                {item.label}
               </button>
             ))}
           </nav>
 
-          {/* Theme Toggle & Mobile Menu */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center gap-2">
+            <Button
+              onClick={() => scrollToSection("contact")}
+              size="sm"
+              className="hidden rounded-full px-5 sm:inline-flex"
+            >
+              Vamos conversar
+            </Button>
+
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg bg-card hover:bg-accent transition-colors duration-200"
-              aria-label="Toggle theme"
+              aria-label="Alternar tema"
+              aria-pressed={theme === "dark"}
+              className="flex h-11 w-11 items-center justify-center rounded-2xl border border-border/70 bg-card/70 text-foreground hover:border-primary/35 hover:text-primary"
             >
-              {theme === "dark" ? (
-                <Sun className="w-5 h-5 text-accent-foreground" />
-              ) : (
-                <Moon className="w-5 h-5 text-accent-foreground" />
-              )}
+              {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </button>
 
-            {/* Mobile menu button */}
             <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2 rounded-lg bg-card hover:bg-accent transition-colors duration-200"
-              aria-label="Toggle menu"
+              onClick={() => setIsMenuOpen((current) => !current)}
+              className="flex h-11 w-11 items-center justify-center rounded-2xl border border-border/70 bg-card/70 text-foreground lg:hidden"
+              aria-label="Alternar menu"
+              aria-expanded={isMenuOpen}
             >
-              {isMenuOpen ? (
-                <X className="w-5 h-5 text-accent-foreground" />
-              ) : (
-                <Menu className="w-5 h-5 text-accent-foreground" />
-              )}
+              {isMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden bg-card/95 backdrop-blur-md border border-border rounded-lg mt-2 p-4">
-            <nav className="flex flex-col space-y-3">
-              {["home", "about", "portfolio", "contact"].map((item) => (
+          <div className="border-t border-border/70 px-4 pb-4 pt-3 lg:hidden sm:px-5">
+            <nav className="grid gap-2">
+              {navigationItems.map((item) => (
                 <button
-                  key={item}
-                  onClick={() => scrollToSection(item)}
-                  className="text-left text-foreground hover:text-primary transition-colors duration-200 capitalize font-medium py-2"
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className="rounded-2xl border border-border/60 bg-card/70 px-4 py-3 text-left text-sm font-medium text-foreground/82"
                 >
-                  {item === "portfolio"
-                    ? "Projetos"
-                    : item === "about"
-                      ? "Sobre"
-                      : item === "contact"
-                        ? "Contato"
-                        : "Home"}
+                  {item.label}
                 </button>
               ))}
+
+              <Button onClick={() => scrollToSection("contact")} className="mt-2 rounded-2xl">
+                Entrar em contato
+              </Button>
             </nav>
           </div>
         )}
