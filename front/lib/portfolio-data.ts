@@ -68,7 +68,7 @@ export const profile = {
     "Desenvolvedor front-end especializado em React, TypeScript, Next.js e VTEX IO, com experiência em e-commerce, aplicações de negócio e fluxos que precisam ser claros, rápidos e estáveis em produção.",
   differentiator:
     "Antes do front-end, atuei com ERP, faturamento, estoque, SLA e suporte técnico. Isso me ajuda a transformar regras complexas em interfaces utilizáveis, sustentáveis e preparadas para operação real.",
-  resumeHref: "/pdf/EmanuelNascimento_CV.pdf",
+  resumeHref: "/pdf/CV-Emanuel-Nascimento.pdf",
   email: "emanuelnas29@gmail.com",
   phone: "+54 9 11 5574-0085",
   linkedin: "https://www.linkedin.com/in/emanueldjn/",
